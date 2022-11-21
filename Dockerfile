@@ -51,6 +51,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 USER www-data
 RUN composer install --no-interaction
+RUN composer require symfony/runtime
 
 EXPOSE 9000
 
