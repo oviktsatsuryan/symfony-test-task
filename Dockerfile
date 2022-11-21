@@ -38,7 +38,6 @@ RUN docker-php-ext-install \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Copy existing app directory
 COPY ./ /var/www
 WORKDIR /var/www
 
@@ -52,9 +51,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 USER www-data
 RUN composer install --no-interaction
-
-# For Laravel Installations
-#RUN php artisan key:generate
 
 EXPOSE 9000
 
